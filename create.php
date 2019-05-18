@@ -33,18 +33,6 @@ require 'config/database.php';
 $queryo = "SHOW TABLES";
 $res = $conn->prepare($queryo);
 $res->execute();
-?>
-<form method="POST" name="test">
-<select name = 'tabel' onchange="window.location.href='create.php?abc='+this.value">
-<?php
-while ($row =$res->fetch())
-{
-    echo "<option value = '{$row['0']}'";
-    echo ">{$row['0']}</option>";
-}
-?>
- </select> </form>
-<?php
 if(isset($_GET['abc']))
 {
     $namatabel=$_GET['abc'];
@@ -54,6 +42,18 @@ else
 {
     $namatabel="denda";
 }
+?>
+<form method="POST" name="test">
+<select name='tabel' onchange="window.location.href='create.php?abc='+this.value">
+<?php
+while ($row =$res->fetch())
+{
+    echo "<option value = '{$row['0']}'";
+    echo ">{$row['0']}</option>";
+}
+?>
+ </select> </form>
+<?php
 
 $quer = "describe $namatabel";
 $result = $conn->prepare($quer);
@@ -124,7 +124,7 @@ if ($n > 0) {
             $form .= "</div>";
         }
     }
-    $form .= "<input type='submit' name='save' value='Save'></form>";
+    $form .= "<input type='submit' name='save' value='Save' class='btn btn-primary'><a href='index.php?abc=$namatabel' class='btn btn-danger'>Back to List</a></form>";
 }
 
 echo $form;
