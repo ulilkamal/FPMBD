@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>View 1</title>
+    <title>Join 1</title>
      
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -36,19 +36,19 @@
         <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="btn-toolbar text-center well" >  
-    <h1>Soal View 1 Ulil</h1>
+    <h1>Soal Join 1 Ulil</h1>
         </div>
      
         <?php
             // include database connection
             include '../config/database.php';
-            $quer = "describe lihat7hari";
-            $result = $conn->prepare($quer);
-            $result->execute();
-            $n = $result->rowCount();
-
             // select all data
-            $query = "SELECT * FROM lihat7hari";
+            $query = "SELECT nama_karyawan FROM karyawan 
+                        JOIN transaksi USING (id_karyawan)
+                        JOIN ruang USING (kode_ruang)
+                        JOIN menyediakan USING (kode_ruang)
+                        JOIN fasilitas USING (id_fasilitas)
+                        WHERE jenis_fasilitas='proyektor';";
             $stmt = $conn->prepare($query);
             $stmt->execute();
 
@@ -65,13 +65,8 @@
                 echo "<table class='col-md-4 col-form-label text-md-right table table-hover table-responsive table-bordered'>";//start table
  
                     //creating our table heading
-                    $result->execute();
                     echo "<tr>";
-                        while ($row = $result->fetch()) {
-                            if ($row["Field"] != "id") {
-                                echo "<th>".$row["Field"]."</th>";
-                            }
-                        }
+                    echo "<th>nama_karyawan</th>";
                     echo "</tr>";
                     
                     // retrieve our table contents
@@ -82,7 +77,6 @@
                          echo "<tr>";
                                 $j=0;
                                 foreach ($row as $key => $value){
-                                    if($j==0) {$namakolom=$key;$id = $value;$j++;}
                                     echo "<td>".$value."</td>";
                                 }
                          echo "</tr>";

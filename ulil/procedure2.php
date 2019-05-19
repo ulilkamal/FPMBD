@@ -2,7 +2,7 @@
 <html>
 <head>
 
-    <title>Function 2 Ulil</title>
+    <title>Procedure 1 Ulil</title>
        
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -30,48 +30,50 @@
         <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="btn-toolbar text-center well" >
-            <h1>Function 2 Ulil</h1>
+            <h1>Procedure 1 Ulil</h1>
         </div>
       
         <?php
 
 require '../config/database.php';
-
+if(isset($_POST['ganti'])){
+ 
+    // include database connection
+    include '../config/database.php';
+ 
+    try{
+        // insert query
+        $query = "UPDATE ruang SET hargaperjam=hargaperjam*1.2 WHERE kode_ruang=:ruangnya;";
+        //prepare query for execution
+        $stmt = $conn->prepare($query);
+        $ruang = htmlspecialchars(strip_tags($_POST['ruang']));
+        
+        $stmt->bindParam(':ruangnya', $ruang);
+        if($stmt->execute()){
+            echo "<div class='alert alert-success'>Berhasil.</div>";
+        }else{
+            echo "<div class='alert alert-danger'>Gagal.</div>";
+        }
+    }
+     
+    // show error
+    catch(PDOException $exception){
+        die('ERROR: ' . $exception->getMessage());
+    }
+}
 ?>
 <form  method="post">
     <table class='table table-hover table-responsive table-bordered'>
         <tr>
-            <td></td>
-            <td>
-                <input type='submit' name='hitung' value='Hitung Ruangan Berproyektor' class='btn btn-primary' />
-                <!-- <a href='index.php' class='btn btn-danger'>Back to read products</a> -->
-            </td>
+            <td>Nama Ruang</td>
+            <td><input type='text' name='ruang' class='form-control' /></td>
         </tr>
         <tr>
-            <?php 
-                if(isset($_POST['hitung'])){
-             
-                // include database connection
-                include '../config/database.php';
-             
-                try{
-                    // insert query
-                    $query = "SELECT ruang_proy() as hasil;";
-                    //prepare query for execution
-                    $stmt = $conn->prepare($query);
-                    $stmt->execute();
-
-                    $row = $stmt->fetch(PDO::FETCH_ASSOC);  
-                    $value = $row['hasil'];
-                    echo "<div class='alert alert-success'>Ruangan yang berproyektor ada ".$value.".</div>";
-                }
-                 
-                // show error
-                catch(PDOException $exception){
-                    die('ERROR: ' . $exception->getMessage());
-                }
-            }
-            ?>
+            <td></td>
+            <td>
+                <input type='submit' name='ganti' value='Tambah Harga Sewa' class='btn btn-primary' />
+                <!-- <a href='index.php' class='btn btn-danger'>Back to read products</a> -->
+            </td>
         </tr>
     </table>
 </form>

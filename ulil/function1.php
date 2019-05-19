@@ -2,13 +2,27 @@
 <html>
 <head>
 
-    <title>Update Data</title>
+    <title>Function 1 Ulil</title>
        
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../style.css">
           
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="home.php">SEWA RUANG</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/fpmbd/index.php">INPUT</a></li>
+      <li><a href="/fpmbd/pertanyaan.php">OUTPUT</a></li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<br>
 <body>
   
     <!-- container -->

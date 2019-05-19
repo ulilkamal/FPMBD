@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Index</title>
+    <title>View 2</title>
      
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -22,8 +22,8 @@
       <a class="navbar-brand" href="home.php">SEWA RUANG</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="index.php">INPUT</a></li>
-      <li><a href="pertanyaan.php">OUTPUT</a></li>
+      <li><a href="/fpmbd/index.php">INPUT</a></li>
+      <li><a href="/fpmbd/pertanyaan.php">OUTPUT</a></li>
     </ul>
   </div>
 </nav>
