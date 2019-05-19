@@ -1,0 +1,65 @@
+.biruu{
+	background: blue;
+	color: yellow;
+	text-align: center;
+}
+.header{
+	width: 90%;
+	margin: auto;
+	height: 120px;
+	line-height: 120px;
+	background: #41A85F;
+	color: #000;
+}
+
+.center{
+	color: white;
+  	text-align: center;
+}
+h1{
+	text-align: center;
+	font-size: 50px;
+	text-transform: uppercase;
+}
+
+.table {
+    font-family: sans-serif;
+    color: #444;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #f2f5f7;
+}
+
+.table tr th{
+    background: #337ab7;
+    color: #fff;
+    font-weight: normal;
+}
+
+.table, th, td {
+    padding: 8px 20px;
+    text-align: center;
+}
+
+.table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+body, html {
+  height: 100%;
+}
+.bg {
+  /* The image used */
+  background-image: url(bg2.jpg);
+
+  /* Half height */
+  height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
+}

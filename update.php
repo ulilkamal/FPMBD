@@ -6,19 +6,20 @@
       
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
           
 </head>
 <body>
   
     <!-- container -->
     <div class="container">
-   
-        <div class="page-header">
+        <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="btn-toolbar text-center well" >
             <h1>Update <?php 
             if(isset($_GET['abc']))
             {
                 echo $_GET['abc'];
-            
             }
             else
             {
@@ -136,12 +137,16 @@ if ($n > 0) {
             $l++;
         }
     }
-    $form .= "<input type='submit' name='update' value='Update' class='btn btn-primary'><a href='index.php?abc=$namatabel' class='btn btn-danger'>Back to List</a></form>";
+    $form .= "<input type='submit' name='update' value='Update' class='btn btn-primary'>
+                <a href='index.php?abc=$namatabel' class='btn btn-danger'>Back to List</a>
+                </form>";
 }
 
 echo $form;
 ?>
-          
+    </div>
+    </div>
+    </div> 
     </div> <!-- end .container -->
       
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

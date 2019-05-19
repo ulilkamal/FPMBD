@@ -6,14 +6,16 @@
       
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
           
 </head>
 <body>
   
     <!-- container -->
     <div class="container">
-   
-        <div class="page-header">
+        <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="btn-toolbar text-center well" > 
             <h1>Insert <?php 
             if(isset($_GET['abc']))
             {
@@ -44,7 +46,9 @@ else
 }
 ?>
 <form method="POST" name="test">
-<select name='tabel' onchange="window.location.href='create.php?abc='+this.value">
+    <div style="float: right;">
+            <select class="btn btn-default dropdown-toggle" data-toggle="dropdown" name='tabel' onchange="window.location.href='index.php?abc='+this.value">
+<!-- <select name='tabel' onchange="window.location.href='create.php?abc='+this.value"> -->
 <?php
 while ($row =$res->fetch())
 {
@@ -52,7 +56,7 @@ while ($row =$res->fetch())
     echo ">{$row['0']}</option>";
 }
 ?>
- </select> </form>
+ </select> </div></form>
 <?php
 
 $quer = "describe $namatabel";
@@ -129,7 +133,9 @@ if ($n > 0) {
 
 echo $form;
 ?>
-          
+    </div>
+    </div>
+    </div>    
     </div> <!-- end .container -->
       
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

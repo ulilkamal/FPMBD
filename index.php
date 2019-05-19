@@ -4,7 +4,8 @@
     <title>Index</title>
      
     <!-- Latest compiled and minified Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
          
     <!-- custom css -->
     <style>
@@ -15,11 +16,26 @@
     </style>
  
 </head>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="home.php">SEWA RUANG</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.php">INPUT</a></li>
+      <li><a href="pertanyaan.php">OUTPUT</a></li>
+    </ul>
+  </div>
+</nav>
+<br>
+<br>
+<br>
 <body>
- 
     <!-- container -->
     <div class="container">
-  
+        <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="btn-toolbar text-center well" >  
     <h1>Daftar <?php 
             if(isset($_GET['abc']))
             {
@@ -48,10 +64,12 @@
             {
                 $namatabel="denda";
             }
+            echo "</div>";
 
             ?>
             <form method="POST" name="test">
-            <select name='tabel' onchange="window.location.href='index.php?abc='+this.value">
+                <div style="float: right;">
+            <select class="btn btn-default dropdown-toggle" data-toggle="dropdown" name='tabel' onchange="window.location.href='index.php?abc='+this.value">
             <?php
             while ($row =$res->fetch())
             {
@@ -59,7 +77,7 @@
                 echo ">{$row['0']}</option>";
             }
             ?>
-            </select> </form>
+            </select> </div></form>
             <?php
             $quer = "describe $namatabel";
             $result = $conn->prepare($quer);
@@ -80,12 +98,14 @@
             $num = $stmt->rowCount();
 
             // link to create record form
-            echo "<a href='create.php?abc=$namatabel' class='btn btn-primary m-b-1em'>Buat $namatabel baru</a>";
+            echo "<a href='create.php?abc=$namatabel' class=' btn btn-primary btn-color btn-bg-color' aria-hidden='true'>Buat $namatabel baru</a>";
 
             //check if more than 0 record found
             if($num>0){
 
-                echo "<table class='table table-hover table-responsive table-bordered'>";//start table
+                
+
+                echo "<table class='col-md-4 col-form-label text-md-right table table-hover table-responsive table-bordered'>";//start table
  
                     //creating our table heading
                     $result->execute();
@@ -116,7 +136,7 @@
                             echo "<td>";
                                 
                                 // we will use this links on next part of this post
-                                echo "<a href='update.php?id={$id}&abc={$namatabel}&kid={$namakolom}' class='btn btn-primary m-r-1em'>Edit</a>";
+                                echo "<a href='update.php?id={$id}&abc={$namatabel}&kid={$namakolom}' class='btn btn-warning m-r-1em'>Edit</a>";
                     
                                 // we will use this links on next part of this post
                                 echo "<a href='delete.php?id={$id}&abc={$namatabel}&kid={$namakolom}'  class='btn btn-danger'>Delete</a>";
@@ -128,13 +148,14 @@
                 echo "</table>";
                 
             }
-
             // if no records found
             else{
                 echo "<div class='alert alert-danger'>No records found.</div>";
             }
         ?>
-         
+
+     </div>
+     </div>
     </div> <!-- end .container -->
      
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
